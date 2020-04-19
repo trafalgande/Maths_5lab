@@ -1,10 +1,5 @@
 package pepe.lmao.interpolation;
 
-import lombok.Data;
-
-import java.util.Arrays;
-
-@Data
 public class Interpolation {
 
     public static void solveByLagrange(double[] x, double[] y, double argument) {
