@@ -7,7 +7,6 @@ public class Interpolation {
        lagrangeInterpolation.solve();
 
         System.out.println("-->Lagrange Interpolation result: " + lagrangeInterpolation.getRes());
-
     }
 
     public static void solveByNewtonPoly(double[] x, double[] y, double argument) {
@@ -16,12 +15,11 @@ public class Interpolation {
 
         System.out.println("-->Newton Polynomial Interpolation result: " + newtonPolyInterpolation.getRes());
     }
+    
     public static void solveByNewton(double[] x, double[] y, double argument) {
         NewtonInterpolation newtonInterpolation = new NewtonInterpolation(x,y,argument);
         newtonInterpolation.solve();
 
         System.out.println("-->Newton Interpolation result: " + newtonInterpolation.getRes());
-
     }
-
 }
