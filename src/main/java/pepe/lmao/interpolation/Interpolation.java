@@ -1,18 +1,12 @@
 package pepe.lmao.interpolation;
 
-import lombok.Data;
-
-import java.util.Arrays;
-
-@Data
 public class Interpolation {
 
     public static void solveByLagrange(double[] x, double[] y, double argument) {
-       LagrangeInterpolation lagrangeInterpolation = new LagrangeInterpolation(x,y,argument);
-       lagrangeInterpolation.solve();
+        LagrangeInterpolation lagrangeInterpolation = new LagrangeInterpolation(x, y, argument);
+        lagrangeInterpolation.solve();
 
         System.out.println("-->Lagrange Interpolation result: " + lagrangeInterpolation.getRes());
-
     }
 
     public static void solveByNewtonPoly(double[] x, double[] y, double argument) {
@@ -21,12 +15,11 @@ public class Interpolation {
 
         System.out.println("-->Newton Polynomial Interpolation result: " + newtonPolyInterpolation.getRes());
     }
+
     public static void solveByNewton(double[] x, double[] y, double argument) {
         NewtonInterpolation newtonInterpolation = new NewtonInterpolation(x,y,argument);
         newtonInterpolation.solve();
 
         System.out.println("-->Newton Interpolation result: " + newtonInterpolation.getRes());
-
     }
-
 }

@@ -20,26 +20,25 @@ public class NewtonPolyInterpolation {
         this.argument = argument;
     }
 
-
     public void solve() {
-
         for (int i = 0; i < n; i++) {
-
             if (argument < x[n - 1] && argument > x[n - 1 - 1] || argument > x[i] && (n - 1 - i) < 3) {
-                node_x = new double[]{x[n - 1 - 2], x[n - 1 - 1], x[n - 1]};
-                node_y = new double[]{y[n - 1 - 2], y[n - 1 - 1], y[n - 1]};
-                res = calc() + calc();
-            }
-            if (argument > x[0] && argument < x[1] || argument > x[i] && (n - 1 - i) >= 3) {
-                for (int j = 0; j < 1; j++) {
+                for (int j = 1; j >= 0; j--) {
+                    node_x = new double[]{x[n - 1 - 2-j], x[n - 1 - 1-j], x[n - 1-j]};
+                    node_y = new double[]{y[n - 1 - 2-j], y[n - 1 - 1-j], y[n - 1-j]};
+                    res += calc();
+                }
+                break;
+            } else if (argument > x[0] && argument < x[1] || argument > x[i] && (n - 1 - i) >= 3) {
+                for (int j = 0; j <= 1; j++) {
                     node_x = new double[]{x[i + j], x[i + j + 1], x[i + j + 2]};
                     node_y = new double[]{y[i + j], y[i + j + 1], y[i + j + 2]};
                     res += calc();
                 }
+                break;
             }
         }
         setRes(res/2);
-
     }
 
     private double calc() {
@@ -57,6 +56,4 @@ public class NewtonPolyInterpolation {
     private double f(int a, int b, int c) {
         return (f(b, c) - f(a, b)) / (node_x[c] - node_x[a]);
     }
-
-
 }

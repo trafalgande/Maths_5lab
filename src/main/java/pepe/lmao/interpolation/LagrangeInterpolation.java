@@ -2,7 +2,6 @@ package pepe.lmao.interpolation;
 
 import lombok.Data;
 
-import java.util.Arrays;
 @Data
 public class LagrangeInterpolation {
     private double[] x;
@@ -19,7 +18,6 @@ public class LagrangeInterpolation {
         this.argument = argument;
     }
 
-
     public void solve() {
         for (int i = 0; i < n; i++) {
             double numerator;
@@ -31,7 +29,6 @@ public class LagrangeInterpolation {
                 }
             }
             l += numerator / denominator * y[i];
-
         }
         setRes(l);
     }
