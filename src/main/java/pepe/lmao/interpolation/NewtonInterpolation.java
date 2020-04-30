@@ -28,29 +28,24 @@ public class NewtonInterpolation {
             t = (argument - x[n - 1]) / (x[1] - x[0]);
             forward(t);
         } else if (argument <= x[n / 2]) {
-            for (int i = 0; i < n / 2 + 1; i++) {
-                if (argument > x[i]) {
-                    t = (argument - x[0]) / (x[1] - x[0]);
-                    k = i;
-                }
-            }
+            while (argument > x[k]) k++;
+            k--;
+            t = (argument - x[k]) / (x[1] - x[0]);
             forward(t);
         } else {
-
             t = (argument - x[n - 1]) / (x[1] - x[0]);
             backward(t);
         }
     }
 
     private void forward(double t) {
-        double res = 0;
+        double res = y[k] + t * delta(1);
         double numerator = t;
-        for (int i = k; i < n - 1; i++) {
-            if (i == k) res = y[k] + t * delta(1);
-            if (i > k) {
-                numerator *= (t - i);
-                res += numerator / fact(i + 1) * delta(i + 1);
-            }
+        int iter = k;
+        for (int i = 1; iter < n - 2; i++) {
+            numerator *= (t - i);
+            res += numerator / fact(i + 1) * delta(i + 1);
+            iter++;
         }
         setRes(res);
     }
@@ -75,7 +70,6 @@ public class NewtonInterpolation {
 
     private double delta(int q, int p) {
         return calcCurrentDelta(q)[p];
-
     }
 
     private double[] calcCurrentDelta(int q) {

@@ -15,11 +15,15 @@ public class Main {
         readFromFile("table_1.txt");
         System.out.println("Set argument for Lagrange Interpolation: ");
         Interpolation.solveByLagrange(x,y,scanner.nextDouble());
+
         System.out.println("Set argument for Newton Polynomial Interpolation: ");
         Interpolation.solveByNewtonPoly(x,y,scanner.nextDouble());
+
+
         readFromFile("table_2.txt");
         System.out.println("Set argument for Newton Interpolation: ");
         Interpolation.solveByNewton(x,y,scanner.nextDouble());
+
     }
 
     public static void readFromFile(String filename) throws IOException {
